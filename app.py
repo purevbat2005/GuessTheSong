@@ -1,19 +1,21 @@
+#importing the libraries
 import csv
 import subprocess
 import shutil
 import random
 import time
 from pathlib import Path
-
 import streamlit as st
 
-st.set_page_config(page_title="Guess the Song 🎧", page_icon="🎧", layout="centered")
+#defining the index
+st.set_page_config(page_title="Guess late 2010s Rap Song 🎧", page_icon="🎧", layout="centered")
 ROOT = Path(__file__).parent
 CUSTOM_DIR = ROOT / "songs"
 SCORES = ROOT / "leaderboard.csv"
 ROUND_COUNT = 5
 TIME_LIMIT = 25
 
+#the page setting ( used ai on this one )
 st.markdown("""
 <style>
 .stApp {background: radial-gradient(circle at 15% 0%, #25164d 0, #0c1020 48%, #080b16 100%); color: #f3f0ff;}
@@ -27,6 +29,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+#Functions
 @st.cache_data(show_spinner=False)
 def load_custom():
     manifest = CUSTOM_DIR / "songs.csv"
